@@ -8,19 +8,18 @@ function chk_percentage()
 }
 
 function chk_dob(){
-	// var q = new Date();
-	// var m = q.getMonth()+1;
-	// var d = q.getDay();
-	// var y = q.getFullYear();
+	
+	var badColor = "#ff6666";
+	var rightnow = new Date();
 
-var rightnow = new Date();
-var backthen = new Date(document.getElementById('dob').value);
- if (rightnow>backthen)
- {
- document.write(rightnow + " is later than " + backthen + ".");
- }
- else
- {
- document.write("Oh, no! Time is reversed! " + backthen + " is later than " + rightnow + "!");
- }
+	var selected = new Date(document.getElementById('dob').value);
+	var message = document.getElementById('confirmMessage');
+	if (rightnow < selected) {
+		message.style.color = badColor;
+		message.innerHTML = "DOB must be less then today";
+		document.getElementById("submit").disabled = true;
+	}else {
+		message.innerHTML = "";
+		document.getElementById("submit").disabled = false;
+	}
 }

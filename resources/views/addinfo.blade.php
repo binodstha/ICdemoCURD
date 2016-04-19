@@ -83,6 +83,7 @@ Add New Info
                                                'id' => 'dob',
                                                'class' => 'form-control',
                                                'onchange' => 'chk_dob()' )) !!}
+        <span id="confirmMessage" class="confirmMessage"></span>
         </div>
     </div>
 
@@ -114,7 +115,9 @@ Add New Info
 
     <div class="form-group">
         <div class = 'col-sm-offset-2 col-sm-10'>
-            {!! Form::submit('Add Info',  array('class'=>'btn btn-primary')) !!}
+            {!! Form::submit('Add Info',  array('id' = 'submit',
+                                                'class' => 'btn btn-primary',
+                                                'disabled' => true)) !!}
         </div>
     </div>
 {!! Form::close() !!} 
