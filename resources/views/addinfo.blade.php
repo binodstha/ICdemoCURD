@@ -7,9 +7,17 @@ Add New Info
 @section('content')
 <h1>New info Form</h1>
 @if($error == 'matched')
-    <p class="text-center error">{!! "The EmailID or Phone number allready exist." !!}</p>   
-    @elseif($error == 'Added')
-    <p class="text-center success">{!! "A new info is Added." !!}</p>
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        The EmailID or Phone number allready exist.
+    </div>   
+@elseif($error == 'Added')
+    <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        The new info is added.
+    </div>
 @endif
 
 {!! Form::open(array('url' => 'addinfo', 'class' => 'form', 'method' => 'POST')) !!}
@@ -115,7 +123,7 @@ Add New Info
 
     <div class="form-group">
         <div class = 'col-sm-offset-2 col-sm-10'>
-            {!! Form::submit('Add Info',  array('id' = 'submit',
+            {!! Form::submit('Add Info',  array('id' => 'submit',
                                                 'class' => 'btn btn-primary',
                                                 'disabled' => true)) !!}
         </div>
