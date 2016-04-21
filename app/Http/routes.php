@@ -14,5 +14,6 @@
 Route::get('/', 'ICdemoController@index');
 Route::get('/info/{name}', 'ICdemoController@info');
 Route::get('/list/{count?}', 'ICdemoController@index');
+Route::post('/search', 'ICdemoController@search');
 Route::get('addinfo/{error?}', 'ICdemoController@create');
 Route::post('addinfo', 'ICdemoController@store');

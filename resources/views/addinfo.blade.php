@@ -15,7 +15,7 @@ Add New Info
 @elseif($error == 'Added')
     <div class="alert alert-success" role="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error:</span>
+        <span class="sr-only">Success:</span>
         The new info is added.
     </div>
 @endif
