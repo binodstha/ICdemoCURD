@@ -12,13 +12,13 @@
 <?php 
 $count = 1; 
 $size = 5;
-$page = 1;
 if ((count($infolist) % $size) > 0 )
 	$pagecount = (count($infolist) - (count($infolist) % $size)) / $size + 1;
 else 
 	$pagecount = count($infolist) / $size;
 
 ?>
+
 @if (count($infolist) == 0)
 	@if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		<div class="alert alert-info" role="alert">
@@ -33,9 +33,9 @@ else
 	@endif
 @else
 	@if ($_SERVER['REQUEST_METHOD'] == 'POST')
-		<p class="text-ledt"> Showing Result for : {!! Input::get('entry') !!}</p>
+		<p class="text-ledt"> Showing Result for : <strong>{!! Input::get('entry') !!}</strong></p>
 	@else
-		<p class="text-ledt"> Current Page : {!! $page . ' OF ' . $pagecount !!}</p>
+		<p class="text-ledt"> Current Page : <strong> {!! $page !!} </strong>  OF  {!! $pagecount !!}</p>
 	@endif
 	
 	<div class="table-responsive">
@@ -71,7 +71,7 @@ else
 			@foreach ($infolist as $info)
 				@if ($count > ($size * ($page - 1)) AND $count <= ($size * $page))
 					<tr>
-						<td>{!!  Html::link('/info/'. $info[3], $info[0]) !!}</td>
+						<td>{!! Html::link('/info/'. $info[3], $info[0]) !!}</td>
 						<td>{!! $info[1] !!}</td>
 						<td>{!! $info[2] !!}</td>
 						<td>{!! $info[3] !!}</td>
@@ -94,7 +94,3 @@ else
 	</div>
 @endif
 @endsection
-
-
-
-
