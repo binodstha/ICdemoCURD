@@ -17,9 +17,9 @@ class ICdemoController extends Controller
 	var $storeInfo;
 	public function __construct()
 	{
-		$this->filterinfo =  new Icdemo\Filter\filterinfo;
+		$this->filterinfo =  new \Icdemo\Filter\filterinfo;
 		$this->validateinfo = new \Icdemo\Validator\validateinfo;
-		$this->storeInfo = new Icdemo\Store\storeInfo;
+		$this->storeInfo = new \Icdemo\Store\storeInfo;
 	}
 	
 	public function index($count = 1) 
