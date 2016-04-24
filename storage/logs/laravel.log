@@ -1194,3 +1194,6 @@ Stack trace:
 [2016-04-22 12:26:55] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ';'' in C:\xampp\htdocs\ICDemoCURD-laravel\storage\framework\views\da3f7a4f3cea0d94f255763d8e3866d46e3e4875.php:38
 Stack trace:
 #0 {main}  
+[2016-04-24 20:57:05] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '/'' in C:\xampp\htdocs\ICDemoCURD-laravel\app\Http\Controllers\ICdemoController.php:19
+Stack trace:
+#0 {main}  
