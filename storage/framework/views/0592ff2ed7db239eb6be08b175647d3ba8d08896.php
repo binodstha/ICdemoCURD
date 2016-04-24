@@ -5,9 +5,17 @@ Add New Info
 <?php $__env->startSection('content'); ?>
 <h1>New info Form</h1>
 <?php if($error == 'matched'): ?>
-    <p class="text-center error"><?php echo "The EmailID or Phone number allready exist."; ?></p>   
-    <?php elseif($error == 'Added'): ?>
-    <p class="text-center success"><?php echo "A new info is Added."; ?></p>
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        The EmailID or Phone number allready exist.
+    </div>   
+<?php elseif($error == 'Added'): ?>
+    <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Success:</span>
+        The new info is added.
+    </div>
 <?php endif; ?>
 
 <?php echo Form::open(array('url' => 'addinfo', 'class' => 'form', 'method' => 'POST')); ?>
@@ -97,6 +105,7 @@ Add New Info
                                                'class' => 'form-control',
                                                'onchange' => 'chk_dob()' )); ?>
 
+        <span id="confirmMessage" class="confirmMessage"></span>
         </div>
     </div>
 
@@ -132,7 +141,9 @@ Add New Info
 
     <div class="form-group">
         <div class = 'col-sm-offset-2 col-sm-10'>
-            <?php echo Form::submit('Add Info',  array('class'=>'btn btn-primary')); ?>
+            <?php echo Form::submit('Add Info',  array('id' => 'submit',
+                                                'class' => 'btn btn-primary',
+                                                'disabled' => true)); ?>
 
         </div>
     </div>
