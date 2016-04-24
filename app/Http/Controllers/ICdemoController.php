@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use Input;
-use Icdemo;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
