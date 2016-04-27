@@ -1,7 +1,7 @@
 @extends('shared.master')
 
 @section('title')
-@if ($_SERVER['REQUEST_METHOD'] == 'POST')
+@if ($_POST)
 	{!! "Search | " . Input::get('entry') !!}
 @else 
 	{!! "Home" !!}
@@ -20,7 +20,7 @@ else
 ?>
 
 @if (count($infolist) == 0)
-	@if ($_SERVER['REQUEST_METHOD'] == 'POST')
+	@if ($_POST)
 		<div class="alert alert-info" role="alert">
 			<strong>Info!</strong>
 			The Search list is empty
@@ -32,7 +32,7 @@ else
 		</div> 
 	@endif
 @else
-	@if ($_SERVER['REQUEST_METHOD'] == 'POST')
+	@if ($_POST)
 		<p class="text-ledt"> Showing Result for : <strong>{!! Input::get('entry') !!}</strong></p>
 	@else
 		<p class="text-ledt"> Current Page : <strong> {!! $page !!} </strong>  OF  {!! $pagecount !!}</p>
@@ -51,7 +51,7 @@ else
 					<th>Education</th>
 				</tr>
 			</thead>
-			@if ($_SERVER['REQUEST_METHOD'] == 'POST')
+			@if ($_POST)
 				@foreach ($infolist as $info)
 					@if ($count > ($size * ($page - 1)) AND $count <= ($size * $page))
 					<tr>
