@@ -13,10 +13,6 @@
 */
 
 
-Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('cache:clear');
-    // return what you want
-});
 Route::get('/', 'ICdemoController@index');
 Route::get('/info/{name}', 'ICdemoController@info');
 Route::get('/list/{count?}', 'ICdemoController@index');
