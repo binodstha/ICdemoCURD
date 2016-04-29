@@ -27,10 +27,9 @@ class ExampleTest extends TestCase
         ->type('binod@stha.com','email')
         ->type('Samakhushi', 'address')
         ->type('Nepali', 'nationality')
-        
         ->select('email','modeofcont')
         ->press('Add Info')
-        ->seePageIs('/addinfo');
+        ->seePageIs('/addinfo/matched');
     }
 
 }
