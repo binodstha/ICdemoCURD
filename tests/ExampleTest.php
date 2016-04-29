@@ -14,8 +14,23 @@ class ExampleTest extends TestCase
     public function testBasicExample()
     {
         $this->visit('/')
-             ->assertResponseOk();
+        ->assertResponseOk();
 
+    }
+
+    public function testNewUserRegistration()
+    {
+        $this->visit('/addinfo')
+        ->type('Taylor', 'name')
+        ->select('male','gender')
+        ->type('12345678','phonenum')
+        ->type('binod@stha.com','email')
+        ->type('Samakhushi', 'address')
+        ->type('Nepali', 'nationality')
+        ->type('23/12/1990', 'date')
+        ->select('email','modeofcont')
+        ->press('Add Info')
+        ->seePageIs('/addinfo');
     }
 
 }

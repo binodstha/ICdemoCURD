@@ -22,7 +22,7 @@ Add New Info
 
 {!! Form::open(array('url' => 'addinfo', 'class' => 'form', 'method' => 'POST')) !!}
     <div class="form-group">
-        {!! Form::label('name','Name', array('class' => 'col-sm-2 control-label')) !!}
+        {!! Form::label('name', 'Name', array('class' => 'col-sm-2 control-label')) !!}
             <div class="col-sm-10">
                 {!! Form::text('name', null, array('required', 
                                                    'class'=>'form-control', 
