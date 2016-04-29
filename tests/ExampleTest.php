@@ -27,7 +27,7 @@ class ExampleTest extends TestCase
         ->type('binod@stha.com','email')
         ->type('Samakhushi', 'address')
         ->type('Nepali', 'nationality')
-        ->type('23/12/1990', 'date')
+        
         ->select('email','modeofcont')
         ->press('Add Info')
         ->seePageIs('/addinfo');
