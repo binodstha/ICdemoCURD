@@ -1,7 +1,11 @@
 @extends('shared.master')
 
 @section('title')
+@if ( $search != '')
 {!! $title . " | " . $search !!}
+@else
+{!! $title !!}
+@endif
 @endsection
 
 @section('content')
