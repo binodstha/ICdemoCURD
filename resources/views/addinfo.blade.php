@@ -1,7 +1,7 @@
 @extends('shared.master')
 
 @section('title')
-Add New Info
+{!! $title !!}
 @endsection
 
 @section('content')
@@ -32,8 +32,8 @@ Add New Info
 
     <div class="form-group">
         {!! Form::label('gender', 'Gender', array('class' => 'col-sm-2 control-label')) !!}
-        {!! Form::radio('gender', 'male', true) !!} male 
-        {!! Form::radio('gender', 'female') !!} female  
+        {!! Form::radio('gender', 'male', true) !!} Male 
+        {!! Form::radio('gender', 'female') !!} Female  
     </div>
     <div class="form-group">
         {!! Form::label('phonenum', 'Phone number', array('class' => 'col-sm-2 control-label')) !!}

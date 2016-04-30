@@ -1,11 +1,7 @@
 @extends('shared.master')
 
 @section('title')
-@if ($_POST)
-	{!! "Search | " . Input::get('entry') !!}
-@else 
-	{!! "Home" !!}
-@endif
+{!! $title . " | " . $search !!}
 @endsection
 
 @section('content')
@@ -16,81 +12,85 @@ if ((count($infolist) % $size) > 0 )
 	$pagecount = (count($infolist) - (count($infolist) % $size)) / $size + 1;
 else 
 	$pagecount = count($infolist) / $size;
-
 ?>
 
 @if (count($infolist) == 0)
-	@if ($_POST)
-		<div class="alert alert-info" role="alert">
-			<strong>Info!</strong>
-			The Search list is empty
-		</div> 
-	@else
-		<div class="alert alert-info" role="alert">
-			<strong>Info!</strong>
-			The list is empty.
-		</div> 
+<div class="alert alert-info" role="alert">
+	<strong>Info!</strong>
+	@if ($search != '')
+	The search list is empty.
+	@else 
+	The list is empty.
 	@endif
+</div> 
 @else
-	@if ($_POST)
-		<p class="text-ledt"> Showing Result for : <strong>{!! Input::get('entry') !!}</strong></p>
-	@else
-		<p class="text-ledt"> Current Page : <strong> {!! $page !!} </strong>  OF  {!! $pagecount !!}</p>
-	@endif
-	
-	<div class="table-responsive">
-		<table class = 'table table-hover'>
-			<thead class="thead-inverse">
-				<tr>
-					<th>Name</th>
-					<th>Gender</th>
-					<th>Phone Num</th>
-					<th>Email</th>
-					<th>Adderss</th>
-					<th>Date of Birth</th>
-					<th>Education</th>
-				</tr>
-			</thead>
-			@if ($_POST)
-				@foreach ($infolist as $info)
-					@if ($count > ($size * ($page - 1)) AND $count <= ($size * $page))
-					<tr>
-						<td>{!!  Html::link('/info/'. $info[3], $info[0]) !!}</td>
-						<td>{!! $info[1] !!}</td>
-						<td>{!! $info[2] !!}</td>
-						<td>{!! $info[3] !!}</td>
-						<td>{!! $info[4] !!}</td>
-						<td>{!! $info[6] !!}</td>
-						<td>{!! $info[7] !!}</td>	
-					</tr>
-					@endif
-					<?php $count++; ?>
-				@endforeach
-			@else
+@if ($search != '')
+<p class="text-ledt"> Showing Result for : <strong> {!! $search !!} </strong></p>
+@else
+<p class="text-ledt"> Current Page : <strong> {!! $page !!} </strong>  OF  {!! $pagecount !!}</p>
+@endif
 
-			@foreach ($infolist as $info)
-				@if ($count > ($size * ($page - 1)) AND $count <= ($size * $page))
-					<tr>
-						<td>{!! Html::link('/info/'. $info[3], $info[0]) !!}</td>
-						<td>{!! $info[1] !!}</td>
-						<td>{!! $info[2] !!}</td>
-						<td>{!! $info[3] !!}</td>
-						<td>{!! $info[4] !!}</td>
-						<td>{!! $info[6] !!}</td>
-						<td>{!! $info[7] !!}</td>	
-					</tr>
-				@endif
-				<?php $count++; ?>
-			@endforeach
-		</table>
-		<ul class="pagination">
-			@for ($i = 1; $i <= $pagecount; $i++)
-				<li class="page-item">
-					{!! Html::link('/list/'. $i, $i)!!}
-				</li>
-			@endfor
-		</ul>
+<div class="table-responsive">
+	<table class = 'table table-hover'>
+		<thead class="thead-inverse">
+			<tr>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Phone Num</th>
+				<th>Email</th>
+				<th>Adderss</th>
+				<th>Date of Birth</th>
+				<th>Education</th>
+			</tr>
+		</thead>
+		@if ($search != '')
+		@foreach ($infolist as $info)
+		@if ($count > ($size * ($page - 1)) AND $count <= ($size * $page))
+		<tr>
+			<td>{!!  Html::link('/info/'. $info[3], $info[0]) !!}</td>
+			<td>{!! $info[1] !!}</td>
+			<td>{!! $info[2] !!}</td>
+			<td>{!! $info[3] !!}</td>
+			<td>{!! $info[4] !!}</td>
+			<td>{!! $info[6] !!}</td>
+			<td>{!! $info[7] !!}</td>	
+		</tr>
 		@endif
-	</div>
+		<?php $count++; ?>
+		@endforeach
+	</table>
+	<ul class="pagination">
+		@for ($i = 1; $i <= $pagecount; $i++)
+		<li class="page-item">
+			{!! Html::link('/search/'. $search . '/' . $i, $i)!!}
+		</li>
+		@endfor
+	</ul>
+	@else
+
+	@foreach ($infolist as $info)
+	@if ($count > ($size * ($page - 1)) AND $count <= ($size * $page))
+	<tr>
+		<td>{!! Html::link('/info/'. $info[3], $info[0]) !!}</td>
+		<td>{!! $info[1] !!}</td>
+		<td>{!! $info[2] !!}</td>
+		<td>{!! $info[3] !!}</td>
+		<td>{!! $info[4] !!}</td>
+		<td>{!! $info[6] !!}</td>
+		<td>{!! $info[7] !!}</td>	
+	</tr>
+	@endif
+	<?php $count++; ?>
+	@endforeach
+</table>
+<ul class="pagination">
+	@for ($i = 1; $i <= $pagecount; $i++)
+	<li class="page-item">
+		{!! Html::link('/list/'. $i, $i)!!}
+	</li>
+	@endfor
+</ul>
+@endif
+</div>
 @endif
 @endsection
