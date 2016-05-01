@@ -21,29 +21,26 @@ class UserTest extends TestCase
 
     public function testNewUserRegistration()
     {
-    	$this->visit('/addinfo')
-    	->type('Taylor', 'name')
-    	->select('male','gender')
-    	->type('12345678','phonenum')
-    	->type('com','email')
-    	->type('Samakhushi', 'address')
-    	->type('Nepali', 'nationality')
-    	->select('email','modeofcont')
-    	->press('Add Info')
-    	->seePageIs('/addinfo/matched');
-
-
        	$this->visit('/addinfo')
     	->type('Taylor', 'name')
     	->select('male','gender')
     	->type('12345678','phonenum')
-    	->type('com','email')
+    	->type('test@test.com','email')
     	->type('Samakhushi', 'address')
     	->type('Nepali', 'nationality')
     	->select('email','modeofcont')
     	->press('Add Info')
     	->seePageIs('/addinfo/Added'); 
-
 		
+		 $this->visit('/addinfo')
+    	->type('Taylor', 'name')
+    	->select('male','gender')
+    	->type('12345678','phonenum')
+    	->type('test@test.com','email')
+    	->type('Samakhushi', 'address')
+    	->type('Nepali', 'nationality')
+    	->select('email','modeofcont')
+    	->press('Add Info')
+    	->seePageIs('/addinfo/matched');
     }
 }
