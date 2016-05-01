@@ -18,18 +18,6 @@ class ExampleTest extends TestCase
 
     }
 
-    public function testNewUserRegistration()
-    {
-        $this->visit('/addinfo')
-        ->type('Taylor', 'name')
-        ->select('male','gender')
-        ->type('12345678','phonenum')
-        ->type('binod@stha.com','email')
-        ->type('Samakhushi', 'address')
-        ->type('Nepali', 'nationality')
-        ->select('email','modeofcont')
-        ->press('Add Info')
-        ->seePageIs('/addinfo/matched');
-    }
+
 
 }
